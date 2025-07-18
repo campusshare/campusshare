@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Rentals - Campus Share</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        // This script runs immediately to prevent a flash of the wrong theme
+        (function () {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else if (theme === 'light') {
+                document.documentElement.classList.remove('dark-mode');
+            }
+            // If no theme is set in localStorage, the CSS media query will handle it automatically
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="news-marquee">
+        <div class="marquee-content">
+            <span>Your safety is our priority! All renters are verified with a Ghana Card & selfie.</span>
+            <span>Wanna rent a suit for one night? We got you! 👔</span>
+            <span>Have a vehicle you want to rent out for some cool cash? Contact us! 🚗</span>
+            <span>Get 10% OFF your first rental! Mention this promo on WhatsApp.</span>
+            <span>Need a professional camera for your project? Rent a DSLR today! 📸</span>
+            <span>That PS5 gathering dust? Let it earn you money this weekend! 🎮</span>
+            <span>Welcome to Campus Share - KNUST's #1 Rental Hub!</span>
+            <span>Your safety is our priority! All renters are verified with a Ghana Card & selfie.</span>
+            <span>Wanna rent a suit for one night? We got you! 👔</span>
+            <span>Have a vehicle you want to rent out for some cool cash? Contact us! 🚗</span>
+            <span>Get 10% OFF your first rental! Mention this promo on WhatsApp.</span>
+            <span>Need a professional camera for your project? Rent a DSLR today! 📸</span>
+            <span>That PS5 gathering dust? Let it earn you money this weekend! 🎮</span>
+            <span>Welcome to Campus Share - KNUST's #1 Rental Hub!</span>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-container">
+                <h1>Campus Share</h1>
+            </a>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="rentals.html" class="active">All Rentals</a>
+                <a href="about.html">About & Security</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cta-button become-renter-btn">Become a Renter</button>
+                <button class="hamburger-icon" id="hamburger-icon"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-top">
+            <h3>Menu</h3>
+            <button class="close-icon" id="close-icon"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="rentals.html">All Rentals</a>
+        <a href="about.html">About & Security</a>
+        <button class="cta-button become-renter-btn">Become a Renter</button>
+    </div>
+
+    <main>
+        <section class="rentals-hero">
+            <h2>Full Rental Catalogue</h2>
+            <p>Find exactly what you need. Use the filters and search below.</p>
+        </section>
+
+        <section class="filter-section">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search for items (e.g., 'camera', 'suit')...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="creator">Creator</button>
+                <button class="filter-btn" data-category="event">Event</button>
+                <button class="filter-btn" data-category="domestic">Domestic</button>
+                <button class="filter-btn" data-category="automobile">Automobile</button>
+            </div>
+        </section>
+
+        <section class="all-rentals">
+            <div class="item-grid" id="item-grid">
+
+                <div class="loader-container" id="loader">
+                    <div class="loader-box"></div>
+                    <div class="loader-box"></div>
+                    <div class="loader-box"></div>
+                </div>
+
+            </div>
+            <p id="no-results" style="display: none; text-align: center; padding: 3rem;">No items match your filter or
+                search.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>Campus Share</h4>
+                <p>The smartest way for students to access what they need, without the burden of ownership. Built for
+                    the KNUST community.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rentals.html">All Rentals</a></li>
+                    <li><a href="about.html">About & Security</a></li>
+                    <li><a href="#" class="become-renter-btn">Become a Renter</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fab fa-whatsapp"></i> +233241465282</p>
+                <p><i class="fas fa-envelope"></i> help@campusreserve.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Campus Share. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

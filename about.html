@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Security - Campus Share</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        // This script runs immediately to prevent a flash of the wrong theme
+        (function () {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else if (theme === 'light') {
+                document.documentElement.classList.remove('dark-mode');
+            }
+            // If no theme is set in localStorage, the CSS media query will handle it automatically
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="news-marquee">
+        <div class="marquee-content">
+            <span>Your safety is our priority! All renters are verified with a Ghana Card & selfie.</span>
+            <span>Wanna rent a suit for one night? We got you! 👔</span>
+            <span>Have a vehicle you want to rent out for some cool cash? Contact us! 🚗</span>
+            <span>Get 10% OFF your first rental! Mention this promo on WhatsApp.</span>
+            <span>Need a professional camera for your project? Rent a DSLR today! 📸</span>
+            <span>That PS5 gathering dust? Let it earn you money this weekend! 🎮</span>
+            <span>Welcome to Campus Share - KNUST's #1 Rental Hub!</span>
+            <span>Your safety is our priority! All renters are verified with a Ghana Card & selfie.</span>
+            <span>Wanna rent a suit for one night? We got you! 👔</span>
+            <span>Have a vehicle you want to rent out for some cool cash? Contact us! 🚗</span>
+            <span>Get 10% OFF your first rental! Mention this promo on WhatsApp.</span>
+            <span>Need a professional camera for your project? Rent a DSLR today! 📸</span>
+            <span>That PS5 gathering dust? Let it earn you money this weekend! 🎮</span>
+            <span>Welcome to Campus Share - KNUST's #1 Rental Hub!</span>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo-container">
+                <h1>Campus Share</h1>
+            </a>
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="rentals.html">All Rentals</a>
+                <a href="about.html" class="active">About & Security</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cta-button become-renter-btn">Become a Renter</button>
+                <button class="hamburger-icon" id="hamburger-icon"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-top">
+            <h3>Menu</h3>
+            <button class="close-icon" id="close-icon"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="rentals.html">All Rentals</a>
+        <a href="about.html">About & Security</a>
+        <button class="cta-button become-renter-btn">Become a Renter</button>
+    </div>
+
+    <main>
+        <section class="about-page">
+            <div class="about-container">
+                <div class="about-section fade-in-element">
+                    <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                    <p>Campus Share was founded on a simple idea: access is better than ownership. We are the
+                        first peer-to-peer "Library of Things" exclusively for the KNUST community. We connect students
+                        who have things with students who need them, creating a sustainable and affordable ecosystem
+                        right here on campus. We don't own any items; we simply provide the secure platform that makes
+                        sharing possible.</p>
+                </div>
+
+                <div class="about-section fade-in-element">
+                    <h2><i class="fas fa-shoe-prints"></i> How to Rent an Item</h2>
+                    <ol class="how-to-list">
+                        <li><span>1</span> Browse the <a href="rentals.html"
+                                style="color: #3498db; text-decoration: none;">All Rentals </a>page and find the item
+                            you need.</li>
+                        <li><span>2</span> Click the "Rent" button to open a WhatsApp chat with us. The item name will
+                            be pre-filled.</li>
+                        <li><span>3</span> We will confirm the item's availability and guide you through a one-time
+                            security verification (for first-time renters).</li>
+                        <li><span>4</span> Pay the rental fee and a small, refundable security deposit via MoMo.</li>
+                        <li><span>5</span> We connect you with the item's owner for pickup. Once returned safely, your
+                            deposit is refunded instantly.</li>
+                    </ol>
+                </div>
+
+                <div class="about-section fade-in-element" id="security">
+                    <h2><i class="fas fa-shield-halved"></i> Security & Accountability Protocol</h2>
+                    <p>Trust is the foundation of our community. To protect item owners and ensure accountability, we
+                        have a mandatory verification process and clear terms of use.</p>
+                    <div class="security-box">
+                        <h3><i class="fas fa-user-check"></i> First-Time Renter Verification</h3>
+                        <p>To rent for the first time, you will be required to provide the following on WhatsApp:</p>
+                        <ul>
+                            <li>A clear, current selfie.</li>
+                            <li>A clear photo of the FRONT of your valid Ghana Card.</li>
+                            <li>A clear photo of the BACK of your valid Ghana Card.</li>
+                        </ul>
+                        <small>This information is stored securely for verification purposes only and is never shared
+                            publicly.</small>
+                    </div>
+                    <div class="security-box">
+                        <h3><i class="fas fa-gavel"></i> Accountability for Damages</h3>
+                        <p class="accountability-statement">
+                            By using our service to rent an item, you explicitly agree that you are fully responsible
+                            for returning it in the same condition you received it. If an item is damaged, lost, or
+                            stolen while in your care, you will be held accountable and will be required to pay for the
+                            repair or full replacement cost. Failure to do so will result in being banned from the
+                            platform and further action.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>Campus Share</h4>
+                <p>The smartest way for students to access what they need, without the burden of ownership. Built for
+                    the KNUST community.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rentals.html">All Rentals</a></li>
+                    <li><a href="about.html">About & Security</a></li>
+                    <li><a href="#" class="become-renter-btn">Become a Renter</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fab fa-whatsapp"></i> +233241465282</p>
+                <p><i class="fas fa-envelope"></i> help@campusreserve.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Campus Share. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
