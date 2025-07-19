@@ -10,16 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
         closeIcon.addEventListener('click', () => mobileMenu.classList.remove('active'));
     }
 
-    // --- WhatsApp Button Functionality ---
+    // --- **UPDATED** WhatsApp Button Functionality ---
     const yourWhatsAppNumber = '+233241465282'; // Your number
 
     document.body.addEventListener('click', (e) => {
+        // For "Rent" buttons
         if (e.target.classList.contains('rent-btn')) {
             const itemName = e.target.getAttribute('data-item');
-            const message = `I want to rent the ${itemName}`;
+            const itemImageUrl = e.target.getAttribute('data-image-url'); // Get the image URL
+
+            // Create the new message with the image link
+            const message = `I want to rent the ${itemName}\n\n${itemImageUrl || ''}`;
+
             const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
+        // For "Become a Renter" buttons
         if (e.target.classList.contains('become-renter-btn')) {
             const message = `I want to rent out my stuff`;
             const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(message)}`;
@@ -27,11 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- **NEW** Theme Toggle Functionality ---
+    const themeToggle = document.getElementById('theme-toggle');
+
+    const setTheme = (theme) => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme');
+            if (document.documentElement.classList.contains('dark-mode') || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    }
+
     // --- **NEW** Fade-in on Scroll Functionality ---
     const observerOptions = {
-        root: null, // observes intersections relative to the viewport
+        root: null,
         rootMargin: '0px',
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -47,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach(el => observer.observe(el));
     };
 
-    // Start observing elements that are already in the HTML (like on index.html and about.html)
     const staticFadeInElements = document.querySelectorAll('.fade-in-element');
     startObserving(staticFadeInElements);
 
@@ -70,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                if (loader) loader.style.display = 'none'; // **UPDATE:** Hide loader on success
+                if (loader) loader.style.display = 'none';
 
                 let allItems = [];
                 if (!data.records) {
@@ -86,24 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     const card = document.createElement('div');
-                    // **UPDATE:** Add 'fade-in-element' class for the animation
                     card.className = 'item-card fade-in-element';
                     card.setAttribute('data-category', listing.Category.toLowerCase());
 
+                    // **UPDATED** The button now includes the 'data-image-url'
                     card.innerHTML = `
                         <img src="${imageUrl}" class="item-card-img" alt="${listing.Title}">
                         <div class="item-card-body">
                             <p class="item-location"><i class="fas fa-map-marker-alt"></i> ${listing.Location || 'Campus-wide'}</p>
                             <h3 class="item-title">${listing.Title}</h3>
                             <p class="item-price">₵${listing.Price || 0} <span>${listing.Unit || '/ day'}</span></p>
-                            <button class="cta-button rent-btn" data-item="${listing.Title}">Rent</button>
+                            <button class="cta-button rent-btn" data-item="${listing.Title}" data-image-url="${imageUrl}">Rent</button>
                         </div>
                     `;
                     itemGrid.appendChild(card);
                     allItems.push(card);
                 });
 
-                // **UPDATE:** Tell the observer to watch the new items that were just created
                 startObserving(allItems);
 
                 // --- Search and Filter Functionality ---
@@ -147,35 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error("Error fetching from Airtable:", error);
-                if (loader) loader.style.display = 'none'; // **UPDATE:** Hide loader on error
+                if (loader) loader.style.display = 'none';
                 itemGrid.innerHTML = "<p>Error loading listings. Please double-check your API key, Base ID, and table name.</p>";
             });
     }
 });
-
-
-// --- **NEW** Theme Toggle Functionality ---
-const themeToggle = document.getElementById('theme-toggle');
-
-// Function to set the theme
-const setTheme = (theme) => {
-    if (theme === 'dark') {
-        document.documentElement.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
-    }
-};
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        // Check which theme is currently active and toggle it
-        const currentTheme = localStorage.getItem('theme');
-        if (document.documentElement.classList.contains('dark-mode') || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            setTheme('light');
-        } else {
-            setTheme('dark');
-        }
-    });
-}
