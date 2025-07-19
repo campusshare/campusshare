@@ -13,18 +13,6 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#2c3e50">
     <meta name="theme-color" content="#ffffff">
-    <script>
-        // This script runs immediately to prevent a flash of the wrong theme
-        (function () {
-            const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark-mode');
-            } else if (theme === 'light') {
-                document.documentElement.classList.remove('dark-mode');
-            }
-            // If no theme is set in localStorage, the CSS media query will handle it automatically
-        })();
-    </script>
 </head>
 
 <body>
